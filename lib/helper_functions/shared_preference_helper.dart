@@ -32,4 +32,37 @@ class SharedPreferenceHelper {
     SharedPreferences preference = await SharedPreferences.getInstance();
     return await preference.setString(userProfilePicKey, profileUrl);
   }
+
+  // get data
+  static Future<bool> getUserLoggedIn() async {
+    SharedPreferences preferences = await SharedPreferences.getInstance();
+    return preferences.getBool(userLoggedInKey) ?? false;
+  }
+
+  static Future<String> getUserName() async {
+    SharedPreferences preferences = await SharedPreferences.getInstance();
+    return preferences.getString(userNameKey) ?? "";
+  }
+
+  static Future<String> getUserEmail() async {
+    SharedPreferences preferences = await SharedPreferences.getInstance();
+    return preferences.getString(userEmailKey) ?? "";
+  }
+
+  static Future<String> getUserUID() async {
+    SharedPreferences preferences = await SharedPreferences.getInstance();
+    return preferences.getString(userUIDKey) ?? "";
+  }
+
+  static Future<String> getUserProfilePic() async {
+    SharedPreferences preferences = await SharedPreferences.getInstance();
+    return preferences.getString(userProfilePicKey) ?? "";
+  }
+
+  // clear all data on sign out
+  // Clear all SharedPreference data
+  static clearData() async {
+    SharedPreferences preferences = await SharedPreferences.getInstance();
+    await preferences.clear();
+  }
 }
